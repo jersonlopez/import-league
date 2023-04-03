@@ -1,7 +1,7 @@
 {
    "name": "import-league",
    "version": "1.0.0",
-   "description": "Santex Back-end Developer Hiring Test",
+   "description": "Awesome Project Build with Node + GraphQL + TypeORM",
    "main": "index.js",
    "scripts": {
       "test": "npm test",

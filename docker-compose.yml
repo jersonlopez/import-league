@@ -1,40 +1,31 @@
-version: "3.8"
+version: '3.8'
 
 services:
   db:
     image: postgres
-    container_name: 'db-container'
     environment:
-      # POSTGRES_PASSWORD: root
-      # POSTGRES_USER: postgres
-      # POSTGRES_DB: db_league
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_DB: ${DB_NAME}
     ports:
-      - '5436:5432'
+      - '${DB_PORT}:5432'
+    volumes:
+      - leagues-db:/var/lib/postgresql/data
     
-  app:
-    # restart: always
+  api:
+    restart: always
     build: .
+    ports:
+      - ${APP_PORT}:${APP_PORT}
     depends_on:
       - db
     environment:
-      # APP_PORT: 5005
-      # BASE_API_URL: https://api.football-data.org/v4
-      # API_TOKEN: d74f640d3e9f44b89b8278cf84329fc0
-      DB_HOST: db-container
-      # DB_PORT: ${DB_PORT}
-      # DB_NAME: db_league
-      # DB_USERNAME: postgres
-      # DB_PASSWORD: root
-    ports:
-      - ${APP_PORT}:${APP_PORT}
+      DB_HOST: db
+      DB_PORT: 5432
     volumes:
-      - .:/app
-      - /app/node_modules
-    # command: npm run db:setup && npm run dev
+      - .:/usr/src/app
+      # - /usr/src/app/node_modules # To keep the node_modules/ folter installed in the image -> creates a new volume each time
+    command: sh ./start-script.sh
 
-# networks:
-#   my-network:
-#     driver: bridge
+volumes:
+  leagues-db:

@@ -2,12 +2,44 @@
 
 ## Steps to run this project
 
-1. Let's run this docker command to create database:
+1. Run `npm i` command to install all the dependencies.
+2. Let's run this docker-compose command to initialize the app:
 
 ```sh
-docker run -d --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=root -e POSTGRES_DB=db_league postgres
+docker compose up
 ```
 
-2. Run `npm i` command.
-3. Run `npm run db:migrate` command
-4. Run `npm run dev` command
+3. Go to [http://localhost:5001/graphql][def]
+
+And now you can interact with the application, thees are the query and mutation you can try:
+
+```
+mutation Import {
+  import(leagueCode: "CL")
+}
+
+# teamName property is optional
+query Players {
+  players(leagueCode: "CL", teamName: "FC Porto"){
+    name
+    role
+    team
+  }
+}
+
+query Teams {
+  teams(teamName: "FC Porto") {
+    id
+    name
+    coach{
+      name
+    }
+    players {
+      name
+    }
+  }
+}
+
+```
+
+[def]: http://localhost:5001/graphql

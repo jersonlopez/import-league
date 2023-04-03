@@ -97,10 +97,7 @@ export const getLeagueInfo = async (leagueCode: string) => {
 
 export const getPlayersInfo = async (leagueCode: string, teamName?: string) => {
   try {
-    console.log({ leagueCode })
-
     const exist = await Competition.findOne({ where: { code: leagueCode } });
-    console.log(exist)
     if (!exist) {
       throw new Error(`League ${leagueCode} doesn't exist`);
     }
@@ -125,8 +122,6 @@ export const getPlayersInfo = async (leagueCode: string, teamName?: string) => {
       throw new Error(`No teams found for ${leagueCode} competition`);
     }
 
-    console.log({ info });
-
     return getAllPlayersCoach(teams);
   } catch (error) {
     console.log('Error: ', error)
@@ -136,8 +131,6 @@ export const getPlayersInfo = async (leagueCode: string, teamName?: string) => {
 
 export const getTeamInfo = async (teamName: string) => {
   try {
-    console.log({ teamName })
-
     const teams = await Team.find({
       where: { name: teamName }, relations: {
         players: true,
@@ -148,8 +141,6 @@ export const getTeamInfo = async (teamName: string) => {
     if (!teams.length) {
       throw new Error(`Team ${teamName} doesn't exist`);
     }
-
-    console.log({ teams });
 
     return teams;
   } catch (error) {

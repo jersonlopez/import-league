@@ -1,4 +1,3 @@
-import { AppDataSource } from "../db";
 import { Coach, Competition, Player, Team } from "../db/entities";
 import { apiClient } from "../helpers/apiClient";
 import { getAllPlayersCoach } from "../serializers";

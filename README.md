@@ -1,5 +1,7 @@
 # Awesome Project Build with Node + GraphQL + TypeORM
 
+> **_NOTE:_** The .env file was uploaded for educational purposes
+
 ## Steps to run this project
 
 1. Run `npm i` command to install all the dependencies.

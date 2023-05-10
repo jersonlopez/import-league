@@ -24,7 +24,7 @@ services:
       DB_PORT: 5432
     volumes:
       - .:/usr/src/app
-      # - /usr/src/app/node_modules # To keep the node_modules/ folter installed in the image -> creates a new volume each time
+      # - /usr/src/app/node_modules # To keep the node_modules/ folder installed in the image -> creates a new volume each time
     command: sh ./start-script.sh
 
 volumes:

@@ -1,3 +1,4 @@
+# To avoid run npm i before run docker-compose uncomment next lines
 # echo 'Installing dependencies...'
 # npm i
 

@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToOne, JoinColumn } from 'typeorm';
-import { Team } from './Team';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 
 @Entity('coaches')
 export class Coach extends BaseEntity {
@@ -14,7 +13,4 @@ export class Coach extends BaseEntity {
 
   @Column({ nullable: true })
   nationality: string;
-
-  // @OneToOne(() => Team, (team) => team.coach)
-  // team: Team;
 }

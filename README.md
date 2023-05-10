@@ -13,7 +13,7 @@ docker compose up
 
 And now you can interact with the application, thees are the query and mutation you can try:
 
-```
+```code
 mutation Import {
   import(leagueCode: "CL")
 }
@@ -39,7 +39,12 @@ query Teams {
     }
   }
 }
-
 ```
 
+## TO DO
+
+- Change [DataMapper][dataMapper] to [ActiveRecord][activeRecord]
+
 [def]: http://localhost:5001/graphql
+[dataMapper]: https://github.com/typeorm/typeorm/blob/HEAD/docs/active-record-data-mapper.md#what-is-the-data-mapper-pattern
+[activeRecord]: https://github.com/typeorm/typeorm/blob/HEAD/docs/active-record-data-mapper.md#what-is-the-active-record-pattern

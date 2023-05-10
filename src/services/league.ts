@@ -1,3 +1,4 @@
+import { AppDataSource } from "../db";
 import { Coach, Competition, Player, Team } from "../db/entities";
 import { apiClient } from "../helpers/apiClient";
 import { getAllPlayersCoach } from "../serializers";
@@ -41,6 +42,8 @@ const getTeams = (teams: TeamResponse[]) => teams.map(async (team) => {
 
 export const importLeagueInfo = async (leagueCode: string) => {
   try {
+    // Competition.createQueryBuilder.
+    // ------------------
     const rows = await Competition.findBy({ code: leagueCode });
 
     if (rows.length) {
